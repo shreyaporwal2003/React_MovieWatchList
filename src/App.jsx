@@ -7,12 +7,18 @@ import Watchlist from "./components/Watchlist";
 import Banner from "./components/Banner";
 
 function App() {
+  let[watchlist,setWatchlist]=useState([])
+  let handleAddtoWatchlist=(movieObj)=>{
+    let newWatchList=[...watchlist,movieObj]
+    setWatchlist(newWatchList)
+    console.log(newWatchList)
+  }
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<><Banner/> <Movies /></>} />
+          <Route path="/" element={<><Banner/> <Movies handleAddtoWatchList={handleAddtoWatchlist} /></>} />
           <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </BrowserRouter>
