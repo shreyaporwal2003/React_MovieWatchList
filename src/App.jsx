@@ -1,5 +1,6 @@
 import "./App.css";
 import "tailwindcss";
+import { useState } from "react";
 import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Movies from "./components/Movies";
@@ -8,17 +9,28 @@ import Banner from "./components/Banner";
 
 function App() {
   let[watchlist,setWatchlist]=useState([])
+
   let handleAddtoWatchlist=(movieObj)=>{
     let newWatchList=[...watchlist,movieObj]
     setWatchlist(newWatchList)
     console.log(newWatchList)
+  }
+
+  let handleRemoveFromWatchList=(movieObj)=>{
+    let filteredWatchlist=watchlist.filter((movie)=>{
+      return movie.id != movieObj.id
+    })
+    setWatchlist(filteredWatchlist)
+    
+
+
   }
   return (
     <>
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route path="/" element={<><Banner/> <Movies handleAddtoWatchList={handleAddtoWatchlist} /></>} />
+          <Route path="/" element={<><Banner/> <Movies handleAddtoWatchList={handleAddtoWatchlist} handleRemoveFromWatchList={handleRemoveFromWatchList} /></>} />
           <Route path="/watchlist" element={<Watchlist />} />
         </Routes>
       </BrowserRouter>

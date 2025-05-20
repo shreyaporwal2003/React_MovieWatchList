@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MovieCard({movieObj, poster_path, name, handleAddtoWatchList}) {
+function MovieCard({movieObj, poster_path, name, handleAddtoWatchList, handleRemoveFromWatchlist}) {
   return (
     <div
       className='h-[40vh] w-[200px] bg-center bg-cover rounded-xl hover:scale-110 duration-300 hover:cursor-pointer relative overflow-hidden flex  flex-col'
