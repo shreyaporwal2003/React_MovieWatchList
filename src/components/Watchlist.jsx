@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Watchlist({watchlist, setWatchlist }) {
+function Watchlist({watchlist, setWatchlist, handleRemoveFromWatchlist }) {
   const[search, setSearch]=useState('')
   let handleSearch=(e)=>{
     setSearch(e.target.value)
@@ -70,7 +70,7 @@ function Watchlist({watchlist, setWatchlist }) {
               <td>{movieObj.vote_average}</td>
               <td>{movieObj.popularity}</td>
               {/* <td>Action</td> */}
-              <td className="text-red-800">Delete</td>
+              <td className="text-red-800" onClick={()=>handleRemoveFromWatchlist(movieObj)}>Delete</td>
             </tr>
 
           })}
